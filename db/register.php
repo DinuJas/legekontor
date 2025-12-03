@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require_once "db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -31,6 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         if ($stmt->execute())
         {
             echo "Registration successful! Legg til info <a href='../leggtilinfo.html'>Legg til info</a>";
+
+            // Lagre info til session
+            $_SESSION["email"] = $email;
         }
         else
         {
